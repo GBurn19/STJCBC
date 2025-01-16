@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>STJCBG</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      background-color: black;
+      color: white;
+    }
+    h1 {
+      margin: 20px 0;
+    }
+    p {
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+    #hiddenImageContainer {
+      position: relative;
+      width: 600px;
+      height: 400px;
+      margin: 20px auto;
+      background-image: url('https://i.imgur.com/qb0a9Xj.jpeg');
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+    .block {
+      position: absolute;
+      background-color: black;
+    }
+    .block1 { top: 0; left: 0; width: 50%; height: 50%; }
+    .block2 { top: 0; left: 50%; width: 50%; height: 50%; }
+    .block3 { top: 50%; left: 0; width: 50%; height: 50%; }
+    .block4 { top: 50%; left: 50%; width: 25%; height: 50%; }
+    .block5 { top: 50%; left: 75%; width: 25%; height: 25%; }
+    .block6 { top: 75%; left: 75%; width: 25%; height: 25%; }
+    .button {
+      border: none;
+      padding: 10px 20px;
+      margin: 10px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    .button.some, .button.things {
+      background-color: blue;
+      color: white;
+    }
+    .button.just, .button.cant, .button.be {
+      background-color: white;
+      color: black;
+    }
+    .button.changed {
+      background-color: red;
+      color: white;
+    }
+    .button:hover {
+      opacity: 0.8;
+    }
+    .quiz {
+      display: none;
+      margin-top: 20px;
+    }
+    .quiz input[type="text"] {
+      padding: 5px;
+      margin: 10px 0;
+    }
+    .quiz button {
+      margin-top: 10px;
+    }
+    #initialScreen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: black;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+    #tryButton {
+      background-color: red;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      font-size: 18px;
+      cursor: pointer;
+    }
+    #tryButton:hover {
+      opacity: 0.8;
+    }
+    audio {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="initialScreen">
+    <p>How many times have you tried? Do you really think you can change it?</p>
+    <button id="tryButton">Try</button>
+  </div>
+
+  <audio id="backgroundMusic" loop>
+    <source src="https://github.com/GBurn19/STJCBC/raw/refs/heads/main/Bye_Bye_Mitsein_x_Time_Leap_-mc.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <h1>STJCBG</h1>
+  <p>Give up, you know it won't be stopped.</p>
+
+  <div id="hiddenImageContainer">
+    <div id="block1" class="block block1"></div>
+    <div id="block2" class="block block2"></div>
+    <div id="block3" class="block block3"></div>
+    <div id="block4" class="block block4"></div>
+    <div id="block5" class="block block5"></div>
+    <div id="block6" class="block block6"></div>
+  </div>
+
+  <div id="questions">
+    <button class="button some" onclick="showQuiz(1)">Some</button>
+    <button class="button things" onclick="showQuiz(2)">Things</button>
+    <button class="button just" onclick="showQuiz(3)">Just</button>
+    <button class="button cant" onclick="showQuiz(4)">Can't</button>
+    <button class="button be" onclick="showQuiz(5)">Be</button>
+    <button class="button changed" onclick="showQuiz(6)">Changed</button>
+  </div>
+
+  <div id="quizContainer">
+    <!-- All quizzes -->
+   <div id="quiz1" class="quiz">
+      <p>Where is the first sample of "Don't Forget It's All your Fault From?"</p>
+      <button onclick="checkAnswer(1, 'A')">A. My Little Pony</button>
+      <button onclick="checkAnswer(1, 'B')">B. Superman 2001</button>
+      <button onclick="checkAnswer(1, 'C')">C. The Hunger Games</button>
+      <button onclick="checkAnswer(1, 'D')">D. Euphoria</button>
+    </div>
+    <div id="quiz2" class="quiz">
+      <p>What is the reverse phrase that appears at the end of "Time Leap"?</p>
+      <input type="text" id="answer2" placeholder="Your answer">
+      <button onclick="checkTextAnswer(2, 'Falling end darkest hope')">Submit</button>
+    </div>
+    <div id="quiz3" class="quiz">
+      <p>101 INITIATE MOVING NOW, 102...</p>
+      <input type="text" id="answer3" placeholder="Your answer">
+      <button onclick="checkTextAnswer(3, 'Repeat until you die')">Submit</button>
+    </div>
+    <div id="quiz4" class="quiz">
+      <p>Where is this bass line from?</p>
+      <audio controls>
+        <source src="https://github.com/GBurn19/STJCBC/raw/refs/heads/main/5-Instrument%206%202025-01-14%2011_06-mc.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+      <button onclick="checkAnswer(4, 'A')">A. Evil Smoke</button>
+      <button onclick="checkAnswer(4, 'B')">B. Bye Bye Mitsein</button>
+      <button onclick="checkAnswer(4, 'C')">C. Stratocumulus</button>
+      <button onclick="checkAnswer(4, 'D')">D. The World Is Turning Down</button>
+    </div>
+    <div id="quiz5" class="quiz">
+      <p>What is Ascended ANRI's choker symbol?</p>
+      <button onclick="checkAnswer(5, 'A')">A. A bird</button>
+      <button onclick="checkAnswer(5, 'B')">B. A triangle</button>
+      <button onclick="checkAnswer(5, 'C')">C. A crescent moon</button>
+      <button onclick="checkAnswer(5, 'D')">D. All of the previous</button>
+    </div>
+    <div id="quiz6" class="quiz">
+      <p>At the end of Stratocumulus, what song is Eleanor's pose a reference to?</p>
+      <input type="text" id="answer6" placeholder="Your answer">
+      <button onclick="checkTextAnswer(6, 'One Last Bath in The Rain')">Submit</button>
+    </div>
+
+  </div>
+
+  <script>
+    document.getElementById("tryButton").addEventListener("click", function () {
+      document.getElementById("initialScreen").style.display = "none";
+      const audio = document.getElementById("backgroundMusic");
+      audio.play();
+    });
+
+    function showQuiz(quizNumber) {
+      document.querySelectorAll('.quiz').forEach(quiz => quiz.style.display = 'none');
+      const quizElement = document.getElementById(`quiz${quizNumber}`);
+      if (quizElement) {
+        quizElement.style.display = 'block';
+      } else {
+        console.error(`Quiz ${quizNumber} not found.`);
+      }
+    }
+
+    function checkAnswer(quizNumber, selectedAnswer) {
+      const correctAnswers = { 1: 'A', 4: 'A', 5: 'D' };
+      if (correctAnswers[quizNumber] === selectedAnswer) {
+        revealBlock(quizNumber);
+      } else {
+        alert('Incorrect answer. Try again.');
+      }
+    }
+
+    function checkTextAnswer(quizNumber, correctAnswer) {
+      const userInput = document.getElementById(`answer${quizNumber}`);
+      if (userInput) {
+        const userAnswer = userInput.value.trim().toLowerCase();
+        if (userAnswer === correctAnswer.toLowerCase()) {
+          revealBlock(quizNumber);
+        } else {
+          alert('Incorrect answer. Try again.');
+        }
+      }
+    }
+
+    function revealBlock(blockNumber) {
+      const block = document.getElementById(`block${blockNumber}`);
+      if (block) {
+        block.style.display = 'none';
+      } else {
+        console.error(`Block ${blockNumber} not found.`);
+      }
+    }
+  </script>
+</body>
+</html>
