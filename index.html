@@ -98,7 +98,8 @@
     #tryButton:hover {
       opacity: 0.8;
     }
-    audio {
+    /* Hide only the background music */
+    #backgroundMusic {
       display: none;
     }
   </style>
@@ -137,7 +138,7 @@
 
   <div id="quizContainer">
     <!-- All quizzes -->
-   <div id="quiz1" class="quiz">
+    <div id="quiz1" class="quiz">
       <p>Where is the first sample of "Don't Forget It's All your Fault From?"</p>
       <button onclick="checkAnswer(1, 'A')">A. My Little Pony</button>
       <button onclick="checkAnswer(1, 'B')">B. Superman 2001</button>
@@ -177,7 +178,6 @@
       <input type="text" id="answer6" placeholder="Your answer">
       <button onclick="checkTextAnswer(6, 'One Last Bath in The Rain')">Submit</button>
     </div>
-
   </div>
 
   <script>
